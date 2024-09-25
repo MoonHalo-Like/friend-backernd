@@ -102,12 +102,12 @@
             <artifactId>redisson</artifactId>
             <version>3.32.0</version>
         </dependency>
-        <!-- 七牛云 -->
-        <dependency>
-            <groupId>com.qiniu</groupId>
-            <artifactId>qiniu-java-sdk</artifactId>
-            <version>[7.13.0, 7.13.99]</version>
-        </dependency>
+<!--        &lt;!&ndash; 七牛云 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.qiniu</groupId>-->
+<!--            <artifactId>qiniu-java-sdk</artifactId>-->
+<!--            <version>[7.13.0, 7.13.99]</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -118,6 +118,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.ntxlike</groupId>
+            <artifactId>oss-sdk</artifactId>
+            <version>0.0.4</version>
         </dependency>
 
     </dependencies>

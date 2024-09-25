@@ -4,7 +4,7 @@ import com.ntx.friend.common.BaseResponse;
 import com.ntx.friend.common.ErrorCode;
 import com.ntx.friend.common.ResultUtils;
 import com.ntx.friend.model.vo.FileVO;
-import com.ntx.friend.utils.QiNiuOSSUtils;
+import com.ntx.osssdk.client.OssClient;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 /**
  * @ClassName CommonController
@@ -27,9 +25,11 @@ import java.io.IOException;
 @Slf4j
 @Api(tags = "文件接口")
 public class CommonController {
-    @Autowired
-    private QiNiuOSSUtils qiNiuOSSUtils;
+//    @Autowired
+//    private QiNiuOSSUtils qiNiuOSSUtils;
 
+    @Autowired
+    private OssClient ossClient;
     /**
      * 文件上传
      * @param file
@@ -41,10 +41,10 @@ public class CommonController {
         log.info("文件：{}",file);
         FileVO fileVO = new FileVO();
         try {
-            String url = qiNiuOSSUtils.upload(file);
+            String url = ossClient.upload(file);
             fileVO.setUrl(url);
             return ResultUtils.success(fileVO);
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("文件上传失败：{}",e);
         }
         return ResultUtils.error(ErrorCode.UPLOAD_FAILED);
